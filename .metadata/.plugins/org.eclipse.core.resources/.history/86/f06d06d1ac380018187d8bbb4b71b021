@@ -1,0 +1,13 @@
+package com.panel.aulas;
+
+import com.panel.aulas.model.Aula;
+import com.panel.aulas.model.Puesto;
+
+public class LanzadorClase {
+
+	public static void main(String[] args) {
+		Aula aula = new Aula("SD08",new Puesto());
+		
+	}
+
+}

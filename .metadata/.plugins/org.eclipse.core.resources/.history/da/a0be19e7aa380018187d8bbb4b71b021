@@ -1,0 +1,10 @@
+package com.panel.aulas.model;
+
+public class Ordenador {
+	// EN MB
+	private Integer memoria;
+	private Integer hdd;
+	private Boolean virtualizacion;
+	private Arquitectura arquitectura;
+	private Plataforma plataforma;
+}

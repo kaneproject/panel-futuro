@@ -1,0 +1,5 @@
+package com.panel.aulas.model;
+
+public enum Arquitectura {
+
+}

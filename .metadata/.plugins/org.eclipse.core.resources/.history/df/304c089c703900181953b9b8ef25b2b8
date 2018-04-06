@@ -1,0 +1,24 @@
+package com.panel.biblioteca.core.model.dao.interfaces;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+import com.panel.biblioteca.core.model.entities.Libro;
+
+public interface IBibliotecaDao {
+
+	/**
+	 * Metodo que guarda un libro
+	 * @param libro - Libro a guardar
+	 */
+	void crear(Libro libro);
+	
+	void actualizar(String isbn,Libro libro);
+	
+	void borrar(String isbn);
+	
+	ArrayList<Libro> listar();
+	
+	Libro buscar(String isbn);
+	
+}

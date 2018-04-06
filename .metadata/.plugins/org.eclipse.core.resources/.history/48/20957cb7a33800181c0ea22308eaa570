@@ -1,0 +1,6 @@
+package com.panel.aulas.model;
+
+public class Alumno extends Persona {
+	private String observaciones;
+	private String empresa;
+}

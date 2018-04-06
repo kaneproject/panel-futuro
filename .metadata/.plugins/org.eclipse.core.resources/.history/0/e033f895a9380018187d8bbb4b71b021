@@ -1,0 +1,9 @@
+package com.panel.aulas.model;
+
+import java.util.List;
+
+public class Profesor extends Persona {
+	private String empresa;
+	private List<Curso> curso;
+
+}

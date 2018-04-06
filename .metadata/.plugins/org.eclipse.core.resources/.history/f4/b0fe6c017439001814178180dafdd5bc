@@ -1,0 +1,33 @@
+package com.panel.biblioteca.core.model.business;
+
+import com.panel.biblioteca.core.model.dao.interfaces.IBibliotecaDao;
+import com.panel.biblioteca.core.model.entities.Libro;
+import java.util.Collection;
+
+public class BibliotecaNegocio {
+	private IBibliotecaDao miDao;
+	
+	public BibliotecaNegocio(IBibliotecaDao miDao) {
+		super();
+		this.miDao = miDao;
+	}
+	public void agregarLibros(Collection<Libro> libros) {
+		libros.forEach((libro)->{
+			miDao.crear(libro);
+		});
+	}
+	public void eliminarLibros(Collection<String> isbn) {
+		
+	}
+	public void modificarAutor(String isbn,String autor) {
+		
+	}
+	
+	public Collection<Libro> obtenerLibros(Collection<String> isbn){
+		return null;
+	}
+	public void sustituirLibro(Libro libro) {
+		
+	}
+	
+}

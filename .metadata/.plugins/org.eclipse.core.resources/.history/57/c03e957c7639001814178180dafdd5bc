@@ -1,0 +1,10 @@
+package com.panel.biblioteca.core.model.dao;
+
+import java.util.Map;
+
+import com.panel.biblioteca.core.model.entities.Libro;
+
+public class LibrosMapDao {
+	private static Map<String, Libro> libros;
+	
+}

@@ -1,0 +1,7 @@
+package com.panel.aulas.model;
+
+public enum Arquitectura {
+	ARQ_32BIT,
+	X86_64BIT,
+	ARM
+}

@@ -1,0 +1,10 @@
+package com.panel.aulas.model;
+
+import java.time.LocalDate;
+
+public class Curso {
+	private Clasificacion clasificacion;
+	private LocalDate fecha;
+	private Integer horas;
+	private String nombre;
+}

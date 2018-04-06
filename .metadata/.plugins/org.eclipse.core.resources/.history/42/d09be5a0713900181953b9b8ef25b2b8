@@ -1,0 +1,10 @@
+package com.panel.biblioteca.core.model.business;
+
+import com.panel.biblioteca.core.model.entities.Libro;
+import java.util.Collection;
+
+public class BlbliotecaNegocio {
+	public void agregarLibros(Collection<Libro> libros) {
+		
+	}
+}

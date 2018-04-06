@@ -1,0 +1,42 @@
+package com.panel.biblioteca.core.model.dao;
+
+import java.util.Collection;
+import java.util.Map;
+
+import com.panel.biblioteca.core.model.dao.interfaces.IBibliotecaDao;
+import com.panel.biblioteca.core.model.entities.Libro;
+
+public class LibrosMapDao implements IBibliotecaDao {
+	private static Map<String, Libro> libros;
+
+	@Override
+	public void crear(Libro libro) {
+		libros.put(libro.getIsbn(), libro);
+		
+	}
+
+	@Override
+	public void actualizar(Libro libro) {
+		Libro replace = libros.replace(isbn, libro);
+		
+	}
+
+	@Override
+	public void borrar(String isbn) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Collection<Libro> listar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Libro buscar(String isbn) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

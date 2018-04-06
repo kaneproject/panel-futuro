@@ -1,0 +1,6 @@
+package com.panel.aulas.model;
+
+public class Puesto {
+	private Integer numeroPuesto;
+	private Persona persona;
+}

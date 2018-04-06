@@ -1,0 +1,31 @@
+package com.panel.base;
+
+public class HelloWorld {
+	
+	public static void main(String[] args) {
+		Integer unInteger = new Integer(7);
+		int unInt = 7;
+		String string = "Hola caraculo";
+		Integer otroInteger = unInteger;
+		int otroInt = unInt;
+		Persona.setElDeEneI("elDeEneI");
+		Persona jaimito = new Persona();
+		jaimito.setNombre("Jaimito");
+		Persona luisRamoncito = new Persona();
+		luisRamoncito.setNombre("Luis Ramoncito");
+		luisRamoncito.setElDeEneI("otro");
+		Persona angelico = new Persona();
+		angelico.setNombre("Angelico");
+		System.out.println("valor de int antes " + unInt);
+		dameInt(unInt);
+		System.out.println("valor de int despues " + unInt);
+		
+	}
+	public static void dameInt(int valor) {
+		valor++;
+		System.out.println("valor en metodo = " + valor);
+	}
+	
+	
+
+}

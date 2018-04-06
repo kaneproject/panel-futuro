@@ -1,0 +1,9 @@
+package com.panel.base;
+
+public class HelloWorld {
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

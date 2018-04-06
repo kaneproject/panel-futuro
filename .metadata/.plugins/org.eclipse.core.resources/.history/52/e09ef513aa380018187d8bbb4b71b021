@@ -1,0 +1,6 @@
+package com.panel.aulas.model;
+
+public class Curso {
+	private Clasificacion clasificacion;
+	
+}

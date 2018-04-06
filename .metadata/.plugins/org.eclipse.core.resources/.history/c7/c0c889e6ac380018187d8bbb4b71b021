@@ -1,0 +1,17 @@
+package com.panel.aulas;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.panel.aulas.model.Aula;
+import com.panel.aulas.model.Puesto;
+
+public class LanzadorClase {
+
+	public static void main(String[] args) {
+		List<Puesto> listaPuestoAlumnos = new ArrayList<>();
+		Aula aula = new Aula("SD08",new Puesto(1,new Profesor(),null),);
+		
+	}
+
+}

@@ -1,0 +1,15 @@
+package com.panel.base;
+
+public class Policia extends Persona implements Escamochable{
+
+	public void disparar() {
+		System.out.println("Bang!!");
+	}
+
+	@Override
+	public void escamochar() {
+		for(int i = 0; i < 10;i++) {
+			System.out.println("Saco el pincho y zaaaka zaka!");
+		}	
+	}
+}

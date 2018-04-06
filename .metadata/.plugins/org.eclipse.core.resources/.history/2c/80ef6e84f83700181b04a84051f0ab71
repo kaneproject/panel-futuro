@@ -1,0 +1,8 @@
+package com.panel.base;
+
+public class Policia extends Persona{
+
+	public void disparar() {
+		System.out.println("Bang!!");
+	}
+}

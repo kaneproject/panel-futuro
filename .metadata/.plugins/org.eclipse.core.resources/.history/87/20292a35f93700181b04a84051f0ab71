@@ -1,0 +1,11 @@
+package com.panel.base;
+
+public class Robot implements Escamochable {
+
+	@Override
+	public void escamochar() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

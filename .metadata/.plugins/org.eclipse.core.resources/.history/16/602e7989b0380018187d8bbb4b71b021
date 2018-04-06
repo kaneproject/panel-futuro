@@ -1,0 +1,31 @@
+package com.panel.aulas;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import com.panel.aulas.model.Alumno;
+import com.panel.aulas.model.Aula;
+import com.panel.aulas.model.Profesor;
+import com.panel.aulas.model.Puesto;
+
+public class LanzadorClase {
+	private static AtomicInteger contador;
+	static {
+		contador = new AtomicInteger(0);
+	}
+	
+	public static void main(String[] args) {
+		List<Puesto> listaPuestoAlumnos = new ArrayList<>();
+		Aula aula = new Aula("SD08",new Puesto(contador.incrementAndGet(),new Profesor(),null),listaPuestoAlumnos);
+		while(contador.get()<20) {
+			listaPuestoAlumnos.add(
+					new Puesto(
+							contador.incrementAndGet(),
+							new Alumno(),
+							null));
+		}
+		
+	}
+
+}

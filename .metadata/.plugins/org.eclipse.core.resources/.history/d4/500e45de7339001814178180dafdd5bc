@@ -1,0 +1,24 @@
+package com.panel.biblioteca.core.model.business;
+
+import com.panel.biblioteca.core.model.entities.Libro;
+import java.util.Collection;
+
+public class BibliotecaNegocio {
+	public void agregarLibros(Collection<Libro> libros) {
+		
+	}
+	public void eliminarLibros(Collection<String> isbn) {
+		
+	}
+	public void modificarAutor(String isbn,String autor) {
+		
+	}
+	
+	public Collection<Libro> obtenerLibros(Collection<String> isbn){
+		return null;
+	}
+	public void sustituirLibro(Libro libro) {
+		
+	}
+	
+}

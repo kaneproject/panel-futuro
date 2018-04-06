@@ -1,0 +1,7 @@
+package com.panel.aulas.model;
+
+public class Ordenador {
+	// EN MB
+	private Integer memoria;
+	
+}
