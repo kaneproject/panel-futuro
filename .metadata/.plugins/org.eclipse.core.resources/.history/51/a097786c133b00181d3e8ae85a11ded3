@@ -1,0 +1,231 @@
+package com.panel.biblioteca.core.model.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import com.panel.biblioteca.core.model.dao.interfaces.IBibliotecaDao;
+import com.panel.biblioteca.core.model.entities.Libro;
+
+public class LibrosPostgresDao  implements IBibliotecaDao{
+
+	
+	public LibrosPostgresDao() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		super();
+		Class.forName("org.postgresql.Driver").newInstance();
+		
+	}
+
+	@Override
+	public void crear(Libro libro) {
+		PreparedStatement statement = null;
+		Connection connection = null;
+		try {
+			connection = DriverManager.getConnection("jdbc:postgresql://localhost/postgres",
+					"postgres",
+					"postgres");
+			statement = connection.
+					prepareStatement("insert into libros(isbn,titulo,autor) values (?,?,?)");
+				statement.setString(1, libro.getIsbn());
+				statement.setString(2, libro.getTitulo());
+				statement.setString(3, libro.getAutor());
+				statement.executeUpdate();
+
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	finally {
+			try {
+				statement.close();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public void actualizar(Libro libro) {
+		PreparedStatement statement = null;
+		Connection connection = null;
+		try {
+			connection = DriverManager.getConnection("jdbc:postgresql://localhost/postgres",
+					"postgres",
+					"postgres");
+			statement = connection.
+					prepareStatement("update libros set "
+							+ "titulo = ?,"
+							+ "autor = ?"
+							+ "where isbn = ?");
+				statement.setString(1, libro.getTitulo());
+				statement.setString(2, libro.getAutor());
+				statement.setString(3, libro.getIsbn());
+				statement.executeUpdate();
+
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	finally {
+			try {
+				statement.close();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
+	@Override
+	public void borrar(String isbn) {
+		PreparedStatement statement = null;
+		Connection connection = null;
+		try {
+			connection = DriverManager.getConnection("jdbc:postgresql://localhost/postgres",
+					"postgres",
+					"postgres");
+			statement = connection.
+					prepareStatement("delete from libros "
+							+ "where isbn = ?");
+				statement.setString(1, isbn);
+				statement.executeUpdate();
+
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	finally {
+			try {
+				statement.close();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
+	@Override
+	public Collection<Libro> listar() {
+		List<Libro> libros = new ArrayList<>();
+		PreparedStatement statement = null;
+		ResultSet results = null;
+		Connection connection = null;
+		try {
+			connection = DriverManager.getConnection("jdbc:postgres://localhost/postgres",
+					"postgres",
+					"postgres");
+			statement = connection.
+					prepareStatement("select isbn,titulo,autor from libros");
+
+				results = statement.executeQuery();
+				while (results.next()) {
+					Libro libro = new Libro(results.getString("isbn"), results.getString("titulo"));
+					libro.setAutor(results.getString("autor"));
+					libros.add(libro);
+				}
+
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	finally {
+			try {
+				results.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			try {
+				statement.close();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return libros;
+	}
+
+	@Override
+	public Libro buscar(String isbn) {
+		Libro libro = null;
+		PreparedStatement statement = null;
+		ResultSet results = null;
+		Connection connection = null;
+		try {
+			connection = DriverManager.getConnection("jdbc:postgres://localhost/postgres",
+					"postgres",
+					"postgres");
+			statement = connection.
+					prepareStatement("select isbn,titulo,autor from libros");
+
+				results = statement.executeQuery();
+				if (results.next()) {
+					libro = new Libro(results.getString("isbn"), results.getString("titulo"));
+					libro.setAutor(results.getString("autor"));
+				}
+
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	finally {
+			try {
+				results.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			try {
+				statement.close();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return libro;
+	}
+
+}

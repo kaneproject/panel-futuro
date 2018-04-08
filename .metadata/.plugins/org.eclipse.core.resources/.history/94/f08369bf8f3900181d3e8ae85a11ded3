@@ -1,0 +1,69 @@
+package com.panel.biblioteca.core.model.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Collection;
+
+import com.panel.biblioteca.core.model.dao.interfaces.IBibliotecaDao;
+import com.panel.biblioteca.core.model.entities.Libro;
+
+public class LibrosPostgresDao  implements IBibliotecaDao{
+
+	
+	public LibrosPostgresDao() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		super();
+		Class.forName("org.postgresql.Driver").newInstance();
+		
+	}
+
+	@Override
+	public void crear(Libro libro) {
+		try {
+			Connection connection = DriverManager.getConnection("jdbc:postgres://localhost/postgres",
+					"postgres",
+					"postgres");
+			PreparedStatement statement = connection.
+					prepareStatement("insert into libros(isbn,titulo,autor) values (?,?,?)");
+				statement.setString(1, libro.getIsbn());
+				statement.setString(2, libro.getTitulo());
+				statement.setString(3, libro.getAutor());
+				statement.executeUpdate();
+
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	finally {
+			statement.close();
+			connection.close();
+		}
+	}
+
+	@Override
+	public void actualizar(Libro libro) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void borrar(String isbn) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Collection<Libro> listar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Libro buscar(String isbn) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

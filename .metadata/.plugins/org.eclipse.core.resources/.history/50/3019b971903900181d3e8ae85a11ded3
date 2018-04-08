@@ -1,0 +1,59 @@
+package com.panel.biblioteca.core;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.panel.biblioteca.core.model.business.BibliotecaNegocio;
+import com.panel.biblioteca.core.model.dao.LibrosMapDao;
+import com.panel.biblioteca.core.model.entities.Libro;
+
+public class LanzadorBiblioteca {
+	private static BibliotecaNegocio negocio;
+	public static void main(String[] args) {
+		negocio = new BibliotecaNegocio(FabricaBibliotecaDao.getBibliotecaDao());
+		List<Libro> libros = new ArrayList<>();
+		libros.add(new Libro("ESDLA", "1"));
+		libros.add(new Libro("El jobit", "2"));
+		libros.add(new Libro("Soy Funcional", "3"));
+		libros.add(new Libro("Que triste es vivir", "4"));
+		negocio.agregarLibros(libros);
+		
+		List<String> isbns = new ArrayList<>();
+		libros.forEach((libro)->{
+			isbns.add(libro.getIsbn());
+		});
+	
+		pintarLibrosDeBaseDeDatos(isbns);
+			
+		System.out.println("Tiene que haber 4 :  salida " + 
+				negocio.obtenerLibros(isbns).size());
+		Libro libro = negocio.obtenerLibros(isbns).iterator().next();
+		libro.setAutor("A ver donde estoy");
+		negocio.sustituirLibro(libro);
+		pintarLibrosDeBaseDeDatos(isbns);
+		negocio.eliminarLibros(isbns);
+		System.out.println("Tiene que haber 0 :  salida " + 
+				negocio.obtenerLibros(isbns).size());
+		
+		pintarLibrosDeBaseDeDatos(isbns);
+		
+	}
+	private static void pintarLibrosDeBaseDeDatos(List<String> isbns) {
+		negocio.obtenerLibros(isbns).forEach((libro)->{
+			System.out.println(libro);
+		});
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

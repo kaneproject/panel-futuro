@@ -9,6 +9,11 @@ public class Libro {
 	
 	
 	
+	@Override
+	public String toString() {
+		return "Libro [titulo=" + titulo + ", autor=" + autor + ", sinopsis=" + sinopsis + ", isbn=" + isbn
+				+ ", numeroPaginas=" + numeroPaginas + "]";
+	}
 	public Libro() {
 		super();
 		

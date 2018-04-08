@@ -1,0 +1,5 @@
+package com.panel.biblioteca.core.model.dao;
+
+public class LibrosPostgresDao {
+
+}
